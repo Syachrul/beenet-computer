@@ -30,9 +30,9 @@ const Hero = () => {
               <Button to="/layanan" variant="outline-light" size="lg">Lihat Layanan</Button>
             </div>
             <motion.div className="flex gap-8 mt-12 pt-8 border-t border-white/10" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
-              <div><h3 className="text-3xl font-bold text-[#F5B042]">500+</h3><p className="text-gray-400 text-sm">Klien Puas</p></div>
+              <div><h3 className="text-3xl font-bold text-[#F5B042]">100+</h3><p className="text-gray-400 text-sm">Klien Puas</p></div>
               <div><h3 className="text-3xl font-bold text-[#F5B042]">98%</h3><p className="text-gray-400 text-sm">Kepuasan</p></div>
-              <div><h3 className="text-3xl font-bold text-[#F5B042]">4.9</h3><p className="text-gray-400 text-sm">Rating Google</p></div>
+              <div><h3 className="text-3xl font-bold text-[#F5B042]">5.0</h3><p className="text-gray-400 text-sm">Rating Google</p></div>
             </motion.div>
           </motion.div>
 
