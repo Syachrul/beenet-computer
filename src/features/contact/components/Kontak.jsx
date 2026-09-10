@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, 
-  FaExternalLinkAlt, FaArrowRight, FaInstagram, FaYoutube, FaTiktok, FaFacebook 
+  FaExternalLinkAlt, FaInstagram, FaYoutube, FaTiktok, FaFacebook 
 } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import Particles from '@/components/ui/Particles';
 import companyData from '@/data/company';
 
 const MAPS_URL = 'https://maps.app.goo.gl/to7rVTemp4jjuBdU6';
+const WA_NUMBER = '6285220025810';
 
 const Kontak = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: '', message: '' });
@@ -19,12 +20,31 @@ const Kontak = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      toast.success('Pesan berhasil dikirim!');
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      const waMessage = `Halo BeeNET Computer! 👋
+
+*Nama:* ${formData.name}
+*Email:* ${formData.email}
+*No. HP:* ${formData.phone || '-'}
+*Layanan:* ${formData.service || 'Belum dipilih'}
+
+*Pesan:*
+${formData.message}
+
+---
+_Dikirim dari website beenetcom.my.id_`;
+
+      const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMessage)}`;
+      
+      window.open(waUrl, '_blank');
+      toast.success('Membuka WhatsApp...');
+      
+      setTimeout(() => {
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      }, 1500);
     } catch {
-      toast.error('Gagal mengirim pesan. Silakan coba lagi.');
+      toast.error('Gagal membuka WhatsApp. Silakan coba lagi.');
     } finally {
       setIsSubmitting(false);
     }
@@ -61,7 +81,6 @@ const Kontak = () => {
     }
   ];
 
-  // Social Media Links
   const socialMedia = [
     { icon: FaWhatsapp, link: 'https://wa.me/6285220025810', label: 'WhatsApp', color: 'hover:bg-green-500' },
     { icon: FaInstagram, link: companyData.instagram, label: 'Instagram', color: 'hover:bg-pink-500' },
@@ -85,14 +104,17 @@ const Kontak = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="bg-gray-50 rounded-2xl p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Kirim Pesan</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">Kirim Pesan</h2>
+            <p className="text-sm text-gray-500 mb-6">
+              Pesan akan dikirim ke WhatsApp <span className="font-medium text-green-600">0852-2002-5810</span>
+            </p>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap *</label>
                 <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Masukkan nama Anda" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
                 <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Masukkan email Anda" />
               </div>
               <div>
@@ -111,12 +133,12 @@ const Kontak = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Detail keluhan atau kebutuhan Anda...</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Detail keluhan atau kebutuhan Anda... *</label>
                 <textarea name="message" value={formData.message} onChange={handleChange} required rows="4" className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Tulis pesan Anda..." />
               </div>
-              <button type="submit" disabled={isSubmitting} className="w-full py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
-                {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
-                <FaArrowRight className="w-4 h-4" />
+              <button type="submit" disabled={isSubmitting} className="w-full py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
+                <FaWhatsapp className="w-5 h-5" />
+                {isSubmitting ? 'Mengirim...' : 'Kirim via WhatsApp'}
               </button>
             </form>
           </motion.div>
@@ -146,7 +168,6 @@ const Kontak = () => {
               </motion.div>
             ))}
 
-            {/* Social Media Section */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }} 
               whileInView={{ opacity: 1, y: 0 }} 
@@ -174,7 +195,6 @@ const Kontak = () => {
         </div>
       </div>
 
-      {/* Map Section */}
       <section className="w-full py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
