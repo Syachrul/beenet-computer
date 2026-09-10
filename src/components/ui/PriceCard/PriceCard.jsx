@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaCheckCircle, FaStar } from 'react-icons/fa';
 
-const PriceCard = ({ title, price, priceDetail, features, rating, totalReviews }) => {
+const PriceCard = ({ price, priceDetail, features, rating, totalReviews }) => {
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1 duration-300">
       <div className="flex justify-between items-start mb-4">

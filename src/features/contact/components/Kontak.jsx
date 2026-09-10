@@ -23,7 +23,7 @@ const Kontak = () => {
       await new Promise(resolve => setTimeout(resolve, 1500));
       toast.success('Pesan berhasil dikirim!');
       setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-    } catch (error) {
+    } catch {
       toast.error('Gagal mengirim pesan. Silakan coba lagi.');
     } finally {
       setIsSubmitting(false);

@@ -1,12 +1,9 @@
 import { 
   FaSchool, 
   FaBuilding, 
-  FaStore, 
   FaHotel,
-  FaNetworkWired,
   FaServer,
   FaLaptop,
-  FaPrint,
   FaShieldAlt
 } from 'react-icons/fa'
 
