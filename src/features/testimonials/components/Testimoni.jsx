@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaStar } from 'react-icons/fa';
 import SectionTitle from '@/components/ui/SectionTitle';
-import testimonialsData from '@/data/testimonialsData';
+import testimonialsData from '../data';
 
 const Testimoni = () => {
   const testimonials = testimonialsData || [];
