@@ -24,3 +24,10 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Backup files
+*.bak
+*.backup
+*.backup2
+*.old
+*.tmp
