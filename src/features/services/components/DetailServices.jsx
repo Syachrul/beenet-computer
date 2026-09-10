@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   FaDesktop, FaLaptop, FaPrint, FaNetworkWired, 
@@ -11,12 +12,10 @@ import { FaqItem } from '@/components/ui/Accordion';
 import { servicesData } from '@/data/servicesData';
 import { useInView } from 'react-intersection-observer';
 
-// Icon mapping
 const iconMap = {
   FaDesktop, FaLaptop, FaPrint, FaNetworkWired
 };
 
-// Statistik Mini
 const stats = [
   { icon: FaClock, label: 'Jam Kerja', value: '09:00 - 17:00' },
   { icon: FaShieldAlt, label: 'Garansi', value: '1 Bulan' },
@@ -24,7 +23,6 @@ const stats = [
   { icon: FaTools, label: 'Teknisi', value: 'Profesional' },
 ];
 
-// FAQ Data
 const faqItems = [
   {
     question: 'Berapa lama waktu pengerjaan service?',
@@ -92,7 +90,6 @@ const DetailServices = () => {
 
   return (
     <div className="w-full bg-gray-50 overflow-hidden">
-      {/* Hero Section dengan Particles */}
       <section className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20 overflow-hidden">
         <Particles count={50} />
         <div className="container mx-auto px-4 relative z-10">
@@ -114,7 +111,6 @@ const DetailServices = () => {
               Solusi lengkap untuk semua kebutuhan IT Anda. Professional, terpercaya, dan bergaransi.
             </p>
             
-            {/* Statistik */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-8">
               {stats.map((stat, idx) => (
                 <motion.div
@@ -134,7 +130,6 @@ const DetailServices = () => {
         </div>
       </section>
 
-      {/* Filter Tabs */}
       <div className="container mx-auto px-4 -mt-8 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -157,7 +152,6 @@ const DetailServices = () => {
         </motion.div>
       </div>
 
-      {/* Detail Services Cards */}
       <div className="container mx-auto px-4 py-16">
         <SectionTitle
           title="Detail Layanan"
@@ -188,7 +182,6 @@ const DetailServices = () => {
                     isEven ? 'md:flex-row' : 'md:flex-row-reverse'
                   } bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-500 group`}
                 >
-                  {/* Image / Icon Section */}
                   <motion.div
                     className={`w-full md:w-1/2 bg-gradient-to-br ${service.bgGradient || 'from-blue-500 to-blue-700'} p-8 flex items-center justify-center min-h-[300px] md:min-h-[350px] relative overflow-hidden`}
                     variants={imageVariants}
@@ -201,7 +194,6 @@ const DetailServices = () => {
                       <IconComponent className="w-28 h-28 md:w-36 md:h-36 text-white" />
                     </motion.div>
                     
-                    {/* Rating Badge */}
                     <motion.div
                       initial={{ x: 50, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
@@ -211,7 +203,6 @@ const DetailServices = () => {
                       <FaStar className="w-3 h-3 text-yellow-300" /> {service.rating || 4.8}
                     </motion.div>
 
-                    {/* Progress Badge */}
                     <motion.div
                       initial={{ x: -50, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
@@ -222,7 +213,6 @@ const DetailServices = () => {
                     </motion.div>
                   </motion.div>
 
-                  {/* Content Section */}
                   <motion.div
                     className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-center"
                     variants={textVariants}
@@ -247,7 +237,6 @@ const DetailServices = () => {
                       {service.longDescription || service.description}
                     </motion.p>
 
-                    {/* Features */}
                     <motion.div
                       className="flex flex-wrap gap-2 mt-4"
                       initial={{ opacity: 0 }}
@@ -261,7 +250,6 @@ const DetailServices = () => {
                       ))}
                     </motion.div>
 
-                    {/* Price & CTA */}
                     <motion.div
                       className="flex items-center justify-between mt-4 pt-4 border-t"
                       initial={{ opacity: 0, y: 10 }}
@@ -272,15 +260,15 @@ const DetailServices = () => {
                         <p className="text-sm text-gray-500">{service.priceDetail || 'Mulai dari'}</p>
                         <p className="text-2xl font-bold text-blue-600">{service.price || 'Rp 150.000'}</p>
                       </div>
-                      <a
-                        href="/kontak"
-                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                      <Link
+                        to="/kontak"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors group/btn"
                       >
-                        Pesan Sekarang <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </a>
+                        Pesan Sekarang 
+                        <FaArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      </Link>
                     </motion.div>
 
-                    {/* Rating Detail */}
                     <motion.div
                       className="flex items-center gap-4 mt-3 text-sm text-gray-500"
                       initial={{ opacity: 0 }}
@@ -305,7 +293,6 @@ const DetailServices = () => {
         </motion.div>
       </div>
 
-      {/* FAQ Section */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <SectionTitle
           title="Pertanyaan Umum"
@@ -318,7 +305,6 @@ const DetailServices = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -333,14 +319,12 @@ const DetailServices = () => {
           <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
             Hubungi kami sekarang untuk konsultasi gratis dan dapatkan penawaran terbaik!
           </p>
-          <motion.a
-            href="/kontak"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <Link
+            to="/kontak"
             className="inline-block px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
           >
             Hubungi Kami Sekarang
-          </motion.a>
+          </Link>
         </div>
       </motion.section>
     </div>

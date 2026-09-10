@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaDesktop, FaLaptop, FaPrint, FaNetworkWired, FaArrowRight } from 'react-icons/fa';
 import SectionTitle from '@/components/ui/SectionTitle';
@@ -33,7 +34,7 @@ const Services = () => {
                 viewport={{ once: true }}
               >
                 <Card className="h-full hover:shadow-xl transition-shadow duration-300 group">
-                  <div className="p-5 text-center">
+                  <div className="p-5 text-center flex flex-col h-full">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.3 }}
@@ -42,14 +43,14 @@ const Services = () => {
                       <IconComponent className="w-7 h-7 text-blue-600" />
                     </motion.div>
                     <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
-                    <motion.a
-                      href="/layanan"
-                      whileHover={{ x: 5 }}
-                      className="inline-flex items-center gap-1 mt-3 text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors"
+                    <p className="text-gray-600 text-sm leading-relaxed flex-grow">{service.description}</p>
+                    <Link
+                      to="/layanan"
+                      className="inline-flex items-center justify-center gap-1 mt-4 text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors group/link"
                     >
-                      Selengkapnya <FaArrowRight className="w-3 h-3" />
-                    </motion.a>
+                      Selengkapnya
+                      <FaArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
                 </Card>
               </motion.div>
@@ -64,9 +65,13 @@ const Services = () => {
           viewport={{ once: true }}
           className="text-center mt-8"
         >
-          <a href="/layanan" className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-            Lihat Semua Layanan <FaArrowRight className="w-4 h-4" />
-          </a>
+          <Link
+            to="/layanan"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm group"
+          >
+            Lihat Semua Layanan
+            <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </motion.div>
       </div>
     </section>

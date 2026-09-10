@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaUserTie, FaShieldAlt, FaClock, FaHandHoldingUsd, FaArrowRight } from 'react-icons/fa';
@@ -56,9 +57,9 @@ const Keunggulan = () => {
           viewport={{ once: true }}
           className="text-center mt-8"
         >
-          <a href="/tentang" className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
+          <Link to="/tentang" className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
             Pelajari Lebih Lanjut <FaArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

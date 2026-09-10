@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -241,9 +242,9 @@ const DetailTentang = () => {
           <p className="text-blue-200 mb-6 max-w-2xl mx-auto text-sm md:text-base">
             Hubungi kami sekarang untuk konsultasi gratis dan dapatkan solusi IT terbaik!
           </p>
-          <a href="/kontak" className="inline-block px-6 py-2.5 bg-white text-blue-700 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg text-sm">
+          <Link to="/kontak" className="inline-block px-6 py-2.5 bg-white text-blue-700 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg text-sm">
             Hubungi Kami Sekarang
-          </a>
+          </Link>
         </div>
       </motion.section>
     </div>

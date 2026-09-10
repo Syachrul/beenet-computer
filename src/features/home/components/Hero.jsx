@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaLaptop, FaDesktop, FaPrint, FaNetworkWired } from 'react-icons/fa';
 import Particles from '@/components/ui/Particles';
@@ -18,12 +19,18 @@ const Hero = () => {
                 BeeNET Computer hadir untuk memenuhi kebutuhan service PC, Laptop, Printer, dan Networking Anda - cepat, profesional, dan bergaransi.
               </p>
               <div className="flex flex-wrap gap-3">
-                <a href="/kontak" className="px-5 py-2.5 bg-white text-blue-700 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg text-sm">
+                <Link 
+                  to="/kontak" 
+                  className="px-5 py-2.5 bg-white text-blue-700 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg text-sm"
+                >
                   Konsultasi Gratis
-                </a>
-                <a href="/layanan" className="px-5 py-2.5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors text-sm">
+                </Link>
+                <Link 
+                  to="/layanan" 
+                  className="px-5 py-2.5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors text-sm"
+                >
                   Lihat Layanan
-                </a>
+                </Link>
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="grid grid-cols-2 gap-4">
