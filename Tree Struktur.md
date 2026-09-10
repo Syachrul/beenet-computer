@@ -17,81 +17,100 @@ beenet-computer
 │  │  ├─ layout
 │  │  │  └─ common
 │  │  │     ├─ Container.jsx
+│  │  │     ├─ Container.jsx.backup
 │  │  │     ├─ Footer.jsx
+│  │  │     ├─ Footer.jsx.backup
+│  │  │     ├─ Footer.jsx.backup2
 │  │  │     ├─ Header.jsx
+│  │  │     ├─ Header.jsx.backup
+│  │  │     ├─ Header.jsx.backup2
+│  │  │     ├─ LegalModal.jsx
 │  │  │     └─ LogoCoin.jsx
-│  │  ├─ sections
-│  │  │  ├─ Hero.jsx
-│  │  │  ├─ Keunggulan.jsx
-│  │  │  ├─ Kontak.jsx
-│  │  │  ├─ Layanan.jsx
-│  │  │  ├─ Statistik.jsx
-│  │  │  ├─ TargetKlien.jsx
-│  │  │  └─ Testimoni.jsx
 │  │  └─ ui
+│  │     ├─ Accordion
+│  │     │  ├─ Accordion.jsx
+│  │     │  └─ index.js
 │  │     ├─ Button
 │  │     │  ├─ Button.jsx
 │  │     │  └─ index.js
-│  │     ├─ Button.jsx
 │  │     ├─ Card
 │  │     │  ├─ Card.jsx
 │  │     │  └─ index.js
-│  │     ├─ Card.jsx
 │  │     ├─ index.js
-│  │     ├─ SectionTitle
+│  │     ├─ Modal
 │  │     │  ├─ index.js
-│  │     │  └─ SectionTitle.jsx
-│  │     └─ SectionTitle.jsx
+│  │     │  └─ Modal.jsx
+│  │     ├─ Particles
+│  │     │  ├─ index.js
+│  │     │  └─ Particles.jsx
+│  │     ├─ PriceCard
+│  │     │  ├─ index.js
+│  │     │  └─ PriceCard.jsx
+│  │     └─ SectionTitle
+│  │        ├─ index.js
+│  │        └─ SectionTitle.jsx
 │  ├─ config
 │  │  ├─ constants.js
 │  │  └─ index.js
-│  ├─ content
-│  │  ├─ clients
-│  │  │  └─ index.js
+│  ├─ data
 │  │  ├─ company
 │  │  │  └─ index.js
+│  │  ├─ contactData.js
 │  │  ├─ index.js
-│  │  ├─ portfolio
-│  │  │  └─ index.js
-│  │  ├─ services
-│  │  │  └─ index.js
-│  │  └─ testimonials
-│  │     └─ index.js
-│  ├─ data
-│  │  ├─ index.js
-│  │  ├─ kontakData.js
-│  │  ├─ layananData.js
-│  │  └─ portfolioData.js
+│  │  ├─ legalContent.js
+│  │  ├─ portfolioData.js
+│  │  ├─ servicesData.js
+│  │  └─ testimonialsData.js
 │  ├─ features
 │  │  ├─ about
 │  │  │  ├─ components
+│  │  │  │  ├─ DetailTentang.jsx
 │  │  │  │  ├─ Keunggulan.jsx
 │  │  │  │  └─ TargetKlien.jsx
-│  │  │  └─ index.js
+│  │  │  ├─ data
+│  │  │  ├─ hooks
+│  │  │  ├─ index.js
+│  │  │  └─ utils
 │  │  ├─ contact
 │  │  │  ├─ components
 │  │  │  │  └─ Kontak.jsx
-│  │  │  └─ index.js
+│  │  │  ├─ data
+│  │  │  ├─ hooks
+│  │  │  ├─ index.js
+│  │  │  └─ utils
 │  │  ├─ home
 │  │  │  ├─ components
 │  │  │  │  ├─ Hero.jsx
 │  │  │  │  └─ Statistik.jsx
-│  │  │  └─ index.js
+│  │  │  ├─ data
+│  │  │  ├─ hooks
+│  │  │  ├─ index.js
+│  │  │  └─ utils
 │  │  ├─ index.js
 │  │  ├─ portfolio
 │  │  │  ├─ components
-│  │  │  └─ data
+│  │  │  ├─ data
+│  │  │  ├─ hooks
+│  │  │  ├─ index.js
+│  │  │  └─ utils
 │  │  ├─ services
 │  │  │  ├─ components
+│  │  │  │  ├─ DetailServices.jsx
 │  │  │  │  └─ Services.jsx
-│  │  │  └─ index.js
+│  │  │  ├─ data
+│  │  │  ├─ hooks
+│  │  │  ├─ index.js
+│  │  │  └─ utils
 │  │  └─ testimonials
 │  │     ├─ components
 │  │     │  └─ Testimoni.jsx
-│  │     └─ index.js
+│  │     ├─ data
+│  │     ├─ hooks
+│  │     ├─ index.js
+│  │     └─ utils
 │  ├─ hooks
-│  │  └─ index.js
-│  ├─ index.css
+│  │  ├─ index.js
+│  │  └─ useReducedMotion.js
 │  ├─ main.jsx
 │  ├─ pages
 │  │  ├─ Home.jsx
@@ -104,6 +123,7 @@ beenet-computer
 │  │  ├─ animations.css
 │  │  └─ index.css
 │  └─ utils
+│     └─ ScrollToTop.jsx
 ├─ tailwind.config.js
 └─ vite.config.js
 

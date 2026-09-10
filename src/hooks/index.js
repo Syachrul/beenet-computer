@@ -1,2 +1,1 @@
-export * from './useScroll'
-export * from './useIntersectionObserver'
+export { useReducedMotion } from './useReducedMotion';

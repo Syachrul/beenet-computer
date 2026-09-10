@@ -7,10 +7,16 @@ import Tentang from './pages/Tentang'
 import Kontak from './pages/Kontak'
 import Header from './components/layout/common/Header'
 import Footer from './components/layout/common/Footer'
+import ScrollToTop from './utils/ScrollToTop'
+
+console.log('🚀 App.jsx dimuat!')
 
 function App() {
+  console.log('📦 App component dirender')
+  
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-gray-50">
         <Header />
         <main className="flex-1 pt-20">

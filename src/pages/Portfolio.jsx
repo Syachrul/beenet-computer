@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaCheckCircle, FaCalendarAlt, FaExternalLinkAlt } from 'react-icons/fa'
-import { portfolioData, categories } from '../data/portfolioData'
+import { portfolioData, categories } from '@/data/portfolioData'
 import SectionTitle from '../components/ui/SectionTitle'
 import Button from '../components/ui/Button'
 

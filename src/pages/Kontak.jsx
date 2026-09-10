@@ -1,8 +1,13 @@
-import React from 'react'
-import Kontak from '../components/sections/Kontak'
+import React from 'react';
+import { Kontak } from '@/features/contact';
+import Container from '@/components/layout/common/Container';
 
 const KontakPage = () => {
-  return <Kontak />
-}
+  return (
+    <Container>
+      <Kontak />
+    </Container>
+  );
+};
 
-export default KontakPage
+export default KontakPage;

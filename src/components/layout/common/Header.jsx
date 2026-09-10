@@ -1,133 +1,68 @@
-import React, { useState, useEffect } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
-import { FaBars, FaTimes } from 'react-icons/fa'
-import { motion, AnimatePresence } from 'framer-motion'
-import Button from '../../ui/Button'
-import LogoCoin from './LogoCoin'
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import LogoCoin from './LogoCoin';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const location = useLocation()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const navItems = [
+    { path: '/', label: 'Beranda' },
+    { path: '/layanan', label: 'Layanan' },
+    { path: '/portfolio', label: 'Portfolio' },
+    { path: '/tentang', label: 'Tentang' },
+    { path: '/kontak', label: 'Hubungi' },
+  ];
 
-  useEffect(() => {
-    setIsOpen(false)
-  }, [location])
-
-  const navLinks = [
-    { to: '/', label: 'Beranda', icon: '🏠' },
-    { to: '/layanan', label: 'Layanan', icon: '💻' },
-    { to: '/portfolio', label: 'Portfolio', icon: '📁' },
-    { to: '/tentang', label: 'Tentang', icon: '📋' },
-  ]
+  const handleNavClick = () => {
+    setIsMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-      scrolled 
-        ? 'bg-secondary-dark shadow-2xl py-2 border-b border-primary/10' 
-        : 'bg-secondary-dark/95 backdrop-blur-md py-3 border-b border-white/5'
-    }`}>
-      <div className="container-custom">
-        <div className="flex items-center justify-between">
-          {/* Logo - 25% lebih besar dari sebelumnya */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              {/* Animasi logo coin */}
-              <div className="transform scale-[0.95] origin-left">
-                <LogoCoin 
-                  className={`h-[90px] md:h-[110px] lg:h-[130px] ${
-                    scrolled ? 'h-[60px] md:h-[70px] lg:h-[80px]' : ''
-                  }`}
-                  scrolled={scrolled}
-                />
-              </div>
-              {/* Efek glow */}
-              <div className="absolute -inset-3 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-            </div>
-            {/* Teks BeeNET Computer dalam 1 baris */}
-            <div className="flex items-center gap-1">
-              <span className={`font-extrabold text-white leading-none transition-all duration-300 ${
-                scrolled ? 'text-lg md:text-xl lg:text-2xl' : 'text-2xl md:text-3xl lg:text-4xl'
-              }`}>
-                Bee<span className="text-primary">NET</span>
-              </span>
-              <span className={`text-white/50 font-medium tracking-[0.15em] uppercase transition-all duration-300 ${
-                scrolled ? 'text-[10px] md:text-xs lg:text-sm' : 'text-xs md:text-sm lg:text-base'
-              }`}>
-                Computer
-              </span>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          <Link to="/" onClick={handleNavClick} className="flex items-center gap-3 flex-shrink-0">
+            <LogoCoin className="w-12 h-12 md:w-14 md:h-14" />
+            <div>
+              <span className="text-xl md:text-2xl font-bold text-gray-800 block leading-tight">BEENET</span>
+              <span className="text-xs md:text-sm text-gray-500 block -mt-1">EST. 1998</span>
             </div>
           </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
-            {navLinks.map((link) => (
-              <NavLink 
-                key={link.to} 
-                to={link.to} 
-                className={({ isActive }) =>
-                  `px-4 py-2 rounded-xl font-medium transition-all duration-300 flex items-center gap-2 ${
-                    isActive 
-                      ? 'text-primary bg-primary/10 shadow-glow' 
-                      : 'text-white/70 hover:text-white hover:bg-white/5'
-                  }`
-                }
-              >
-                <span className="text-sm">{link.icon}</span>
-                {link.label}
-              </NavLink>
+          <nav className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
+              <Link key={item.path} to={item.path} onClick={handleNavClick}
+                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
+                  location.pathname === item.path ? 'text-blue-600 border-b-2 border-blue-600 pb-1' : 'text-gray-600'
+                }`}>
+                {item.label}
+              </Link>
             ))}
-            <Button to="/kontak" variant="primary" size="sm">Hubungi</Button>
           </nav>
-
-          {/* Mobile Hamburger */}
-          <button className="md:hidden text-2xl text-white" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <FaTimes /> : <FaBars />}
+          <button className="md:hidden text-gray-600 hover:text-blue-600 transition-colors p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
         </div>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.nav
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 pt-4 border-t border-white/10"
-            >
-              <div className="flex flex-col gap-2">
-                {navLinks.map((link) => (
-                  <NavLink 
-                    key={link.to} 
-                    to={link.to} 
-                    className={({ isActive }) =>
-                      `px-4 py-3 rounded-xl font-medium transition-all duration-300 flex items-center gap-3 ${
-                        isActive 
-                          ? 'text-primary bg-primary/10' 
-                          : 'text-white/70 hover:text-white hover:bg-white/5'
-                      }`
-                    }
-                  >
-                    <span className="text-lg">{link.icon}</span>
-                    {link.label}
-                  </NavLink>
-                ))}
-                <Button to="/kontak" variant="primary" size="md" className="w-full text-center">
-                  Hubungi Kami
-                </Button>
-              </div>
-            </motion.nav>
-          )}
-        </AnimatePresence>
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <nav className="py-4 border-t border-gray-100 flex flex-col gap-2">
+            {navItems.map((item) => (
+              <Link key={item.path} to={item.path} onClick={handleNavClick}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                  location.pathname === item.path ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+                }`}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

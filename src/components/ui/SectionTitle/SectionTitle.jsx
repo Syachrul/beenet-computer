@@ -1,49 +1,17 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { useReducedMotion } from '@hooks/useReducedMotion'
+import React from 'react';
 
-const SectionTitle = ({
-  title,
-  subtitle,
-  align = 'center',
-  className = '',
-  animated = true,
-  ...props
-}) => {
-  const prefersReducedMotion = useReducedMotion()
-
-  const alignment = {
-    left: 'text-left',
-    center: 'text-center',
-    right: 'text-right',
-  }
-
-  const animationProps = animated && !prefersReducedMotion
-    ? {
-        initial: { opacity: 0, y: 20 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, margin: '-50px' },
-        transition: { duration: 0.6 },
-      }
-    : {}
-
+const SectionTitle = ({ title, subtitle, align = 'center', className = '' }) => {
+  const alignment = align === 'center' ? 'text-center' : align === 'left' ? 'text-left' : 'text-right';
+  
   return (
-    <motion.div
-      className={`space-y-4 ${alignment[align]} ${className}`}
-      {...animationProps}
-      {...props}
-    >
-      <h2
-        className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-secondary"
-        dangerouslySetInnerHTML={{ __html: title }}
-      />
+    <div className={`${alignment} ${className} mb-2`}>
+      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">{title}</h2>
       {subtitle && (
-        <p className="text-gray-500 max-w-2xl mx-auto text-base md:text-lg">
-          {subtitle}
-        </p>
+        <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">{subtitle}</p>
       )}
-    </motion.div>
-  )
-}
+      <div className={`w-16 h-1 bg-blue-600 mt-3 ${align === 'center' ? 'mx-auto' : ''}`}></div>
+    </div>
+  );
+};
 
-export default SectionTitle
+export default SectionTitle;

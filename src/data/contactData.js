@@ -1,4 +1,4 @@
-export const kontakData = {
+export const contactData = {
   // Informasi Utama
   nama: 'BeeNET Computer',
   
@@ -22,8 +22,8 @@ export const kontakData = {
   
   // Jam Operasional
   jamOperasional: {
-    senin_jumat: '09.00 - 20.00',
-    sabtu: '09.00 - 17.00',
+    senin_jumat: '09.00 - 17.00',
+    sabtu: '09.00 - 12.00',
     minggu: 'Tutup',
     keterangan: 'Closed · Opens 9.00 am'
   },
@@ -43,4 +43,4 @@ export const kontakData = {
   }
 }
 
-export default kontakData
+export default contactData

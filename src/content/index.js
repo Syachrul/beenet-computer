@@ -1,5 +1,0 @@
-export * from './company'
-export * from './services'
-export * from './portfolio'
-export * from './clients'
-export * from './testimonials'

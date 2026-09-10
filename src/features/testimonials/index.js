@@ -1,1 +1,2 @@
-export { default as Testimoni } from './components/Testimoni'
+// src/features/testimonials/index.js
+export { default as Testimoni } from './components/Testimoni';

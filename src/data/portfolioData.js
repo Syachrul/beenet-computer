@@ -13,88 +13,88 @@ import {
 export const portfolioData = [
   {
     id: 1,
-    title: 'Instalasi Jaringan Sekolah',
-    client: 'SMA Negeri 2 Malang',
+    title: 'Instalasi Jaringan Office',
+    client: 'PT Cerebrum Edukanesia Nusantara',
     category: 'Networking',
-    description: 'Instalasi jaringan LAN dan WiFi di seluruh area sekolah dengan 30 access point dan 5 server.',
+    description: 'Instalasi jaringan LAN dan WiFi di seluruh area Office.',
     icon: FaSchool,
     tags: ['Jaringan', 'WiFi', 'Server'],
-    year: '2024',
+    year: '2018',
     results: [
-      'Kecepatan internet meningkat 300%',
-      'Coverage 100% seluruh area sekolah',
+      'Kecepatan internet meningkat',
+      'Coverage 100% seluruh area Office',
       'Manajemen bandwidth otomatis'
     ]
   },
   {
     id: 2,
     title: 'Digitalisasi Perkantoran',
-    client: 'PT. Maju Jaya Abadi',
+    client: 'PT Integra Dayacipta Grahatama',
     category: 'IT Solution',
     description: 'Transformasi digital perkantoran dengan implementasi sistem manajemen dokumen digital dan cloud storage.',
     icon: FaBuilding,
     tags: ['Cloud', 'Digitalisasi', 'Dokumen'],
-    year: '2024',
+    year: '2014',
     results: [
-      'Efisiensi waktu 60%',
-      'Penggunaan kertas berkurang 80%',
+      'Efisiensi waktu',
+      'Penggunaan kertas berkurang',
       'Akses dokumen dari mana saja'
     ]
   },
   {
     id: 3,
-    title: 'System Restore 50+ PC',
-    client: 'Universitas Brawijaya',
-    category: 'Service PC',
-    description: 'Restore dan upgrade 50 unit PC di laboratorium komputer universitas dengan sistem terintegrasi.',
+    title: 'System Laboratorium PC',
+    client: 'Universitas Pendidikan Indonesia',
+    category: 'Installasi System dan Network PC',
+    description: 'Installasi 12 unit PC di laboratorium komputer universitas dengan sistem terintegrasi.',
     icon: FaServer,
-    tags: ['PC', 'Restore', 'Upgrade'],
-    year: '2023',
+    tags: ['PC', 'Installasi', 'Network'],
+    year: '2012',
     results: [
-      'Performa PC meningkat 40%',
+      'Performa PC meningkat ',
       'Sistem operasi terupdate',
-      'Boot time lebih cepat 50%'
+      'Boot time lebih cepat'
     ]
   },
   {
     id: 4,
-    title: 'Jaringan Hotel 100+ Kamar',
-    client: 'Hotel Santika Premiere',
+    title: 'Jaringan CCTV 32 Titik',
+    client: 'Loka Litbang P2B2 Pangandaran',
     category: 'Networking',
-    description: 'Instalasi jaringan fiber optic dan WiFi untuk 100+ kamar hotel dengan sistem manajemen terpusat.',
+    description: 'Instalasi jaringan CCTV sistem manajemen terpusat.',
     icon: FaHotel,
-    tags: ['Fiber Optic', 'WiFi', 'Hotel'],
-    year: '2024',
+    tags: ['CCTV', 'WiFi', 'Office'],
+    year: '2014',
     results: [
-      'Internet super cepat 1 Gbps',
-      'Manajemen bandwidth per kamar',
+      'Integrasi Security terpusat',
+      'Manajemen Visual area',
       'Sistem monitoring 24/7'
     ]
   },
   {
     id: 5,
-    title: 'Service Laptop & Printer',
-    client: 'CV. Sumber Makmur',
+    title: 'Service PC, Laptop & Printer',
+    client: 'Lab Kualitas Air FTSL ITB',
     category: 'Service Hardware',
-    description: 'Perbaikan dan perawatan 20 unit laptop dan 15 printer untuk kebutuhan operasional perusahaan.',
+    description: 'Perbaikan dan perawatan PC, laptop dan printer untuk kebutuhan operasional Office, Laboratorium.',
     icon: FaLaptop,
-    tags: ['Laptop', 'Printer', 'Maintenance'],
-    year: '2024',
+    tags: ['PC','Laptop', 'Printer', 'Maintenance'],
+    year: '2018',
     results: [
       'Performa laptop optimal',
       'Printer awet dan minim error',
-      'Biaya maintenance turun 30%'
+      'Biaya maintenance turun'
     ]
   },
   {
     id: 6,
     title: 'Keamanan Jaringan & Server',
-    client: 'Bank Syariah Indonesia',
+    client: 'Wifi PKJ',
     category: 'Security',
     description: 'Implementasi sistem keamanan jaringan dan server dengan firewall enterprise dan monitoring real-time.',
     icon: FaShieldAlt,
     tags: ['Security', 'Firewall', 'Monitoring'],
-    year: '2024',
+    year: '2018',
     results: [
       'Zero security breach',
       'Monitoring 24/7',

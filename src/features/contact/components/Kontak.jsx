@@ -1,282 +1,217 @@
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { 
-  FaPhone, 
-  FaEnvelope, 
-  FaMapMarkerAlt, 
-  FaWhatsapp, 
-  FaInstagram, 
-  FaYoutube, 
-  FaTiktok,
-  FaFacebook,
-  FaClock,
-  FaExternalLinkAlt,
-  FaCopy
-} from 'react-icons/fa'
-import { toast } from 'react-hot-toast'
-import { SectionTitle, Button } from '@components/ui'
-import { kontakData } from '@data/kontakData'
+  FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, 
+  FaExternalLinkAlt, FaArrowRight, FaInstagram, FaYoutube, FaTiktok, FaFacebook 
+} from 'react-icons/fa';
+import { toast } from 'react-hot-toast';
+import Particles from '@/components/ui/Particles';
+import companyData from '@/data/company';
+
+const MAPS_URL = 'https://maps.app.goo.gl/to7rVTemp4jjuBdU6';
 
 const Kontak = () => {
-  const [formData, setFormData] = useState({ 
-    name: '', 
-    email: '', 
-    phone: '', 
-    service: '', 
-    message: '' 
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    toast.success('✅ Pesan Anda telah terkirim! Tim BeeNET akan menghubungi Anda dalam 1x24 jam.')
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' })
-    setIsSubmitting(false)
-  }
-
-  const copyToClipboard = (text, label) => {
-    navigator.clipboard.writeText(text)
-    toast.success(`✅ ${label} telah disalin!`)
-  }
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      toast.success('Pesan berhasil dikirim!');
+      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+    } catch (error) {
+      toast.error('Gagal mengirim pesan. Silakan coba lagi.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const contactInfo = [
-    { 
-      icon: FaPhone, 
-      label: kontakData.telepon.display,
-      href: `tel:${kontakData.telepon.utama.replace(/-/g, '')}`,
-      detail: 'Hubungi sekarang',
-      copy: kontakData.telepon.utama
+    {
+      icon: FaMapMarkerAlt,
+      title: 'Alamat',
+      value: 'Perum Pesona Kramat Jaya Blk. B No.6, Rancamulya, Pameungpeuk, Bandung Regency, West Java 40376',
+      link: MAPS_URL,
+      linkText: 'Buka di Google Maps'
     },
-    { 
-      icon: FaWhatsapp, 
-      label: 'Chat WhatsApp',
-      href: `https://wa.me/${kontakData.telepon.whatsapp}`,
-      detail: 'Fast response 24/7',
-      isWhatsApp: true
+    {
+      icon: FaPhone,
+      title: 'Telepon',
+      value: '0852-2002-5810',
+      link: 'tel:085220025810',
+      linkText: 'Hubungi sekarang'
     },
-    { 
-      icon: FaEnvelope, 
-      label: kontakData.email,
-      href: `mailto:${kontakData.email}`,
-      detail: 'Balas dalam 1x24 jam',
-      copy: kontakData.email
+    {
+      icon: FaWhatsapp,
+      title: 'Chat WhatsApp',
+      value: 'Fast response 24/7',
+      link: 'https://wa.me/6285220025810',
+      linkText: 'Chat Sekarang'
     },
-    { 
-      icon: FaMapMarkerAlt, 
-      label: 'Lihat di Google Maps',
-      href: kontakData.alamat.maps,
-      detail: kontakData.alamat.singkat,
-      isMaps: true
-    },
-  ]
+    {
+      icon: FaEnvelope,
+      title: 'Email',
+      value: 'syachrul.bdg@gmail.com',
+      link: 'mailto:syachrul.bdg@gmail.com',
+      linkText: 'Kirim Email'
+    }
+  ];
 
-  const socials = [
-    { icon: FaInstagram, label: 'Instagram', href: kontakData.sosial.instagram, color: 'hover:bg-[#E4405F]' },
-    { icon: FaYoutube, label: 'YouTube', href: kontakData.sosial.youtube, color: 'hover:bg-[#FF0000]' },
-    { icon: FaTiktok, label: 'TikTok', href: kontakData.sosial.tiktok, color: 'hover:bg-[#000000]' },
-    { icon: FaFacebook, label: 'Facebook', href: kontakData.sosial.facebook, color: 'hover:bg-[#1877F2]' },
-  ]
+  // Social Media Links
+  const socialMedia = [
+    { icon: FaWhatsapp, link: 'https://wa.me/6285220025810', label: 'WhatsApp', color: 'hover:bg-green-500' },
+    { icon: FaInstagram, link: companyData.instagram, label: 'Instagram', color: 'hover:bg-pink-500' },
+    { icon: FaYoutube, link: companyData.youtube, label: 'YouTube', color: 'hover:bg-red-500' },
+    { icon: FaTiktok, link: companyData.tiktok, label: 'TikTok', color: 'hover:bg-black' },
+    { icon: FaFacebook, link: companyData.facebook, label: 'Facebook', color: 'hover:bg-blue-600' },
+  ];
 
   return (
-    <section className="section-padding bg-white" id="kontak">
-      <div className="container-custom">
-        <SectionTitle 
-          title="Hubungi <span class='text-primary'>Kami</span>" 
-          subtitle="Konsultasi gratis dan penawaran terbaik untuk kebutuhan IT Anda." 
-        />
-        <div className="grid lg:grid-cols-5 gap-8">
-          <div className="lg:col-span-2">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-secondary">{kontakData.nama}</h3>
-              <div className="flex items-center gap-2 text-sm text-gray-400 mt-1">
-                <FaClock className="text-primary" size={14} />
-                <span>{kontakData.jamOperasional.keterangan}</span>
+    <div className="w-full bg-white overflow-hidden">
+      <section className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16 overflow-hidden">
+        <Particles count={30} />
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Hubungi Kami</h1>
+            <p className="text-lg text-blue-200">Konsultasi gratis dan penawaran terbaik untuk kebutuhan IT Anda.</p>
+          </motion.div>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="bg-gray-50 rounded-2xl p-6 md:p-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Kirim Pesan</h2>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Masukkan nama Anda" />
               </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-4 mb-6 border border-gray-100">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-0.5">
-                  <FaMapMarkerAlt />
-                </div>
-                <div>
-                  <p className="text-secondary font-medium">Alamat</p>
-                  <p className="text-gray-600 text-sm">{kontakData.alamat.detail}</p>
-                  <a 
-                    href={kontakData.alamat.maps}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary text-sm font-medium hover:underline inline-flex items-center gap-1 mt-1"
-                  >
-                    <FaExternalLinkAlt size={12} />
-                    Buka di Google Maps
-                  </a>
-                </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Masukkan email Anda" />
               </div>
-            </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Nomor HP</label>
+                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Masukkan nomor telepon" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Pilih Layanan</label>
+                <select name="service" value={formData.service} onChange={handleChange} className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                  <option value="">Pilih Layanan</option>
+                  <option value="Service PC">Service PC</option>
+                  <option value="Service Laptop">Service Laptop</option>
+                  <option value="Service Printer">Service Printer</option>
+                  <option value="Networking">Networking</option>
+                  <option value="Lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Detail keluhan atau kebutuhan Anda...</label>
+                <textarea name="message" value={formData.message} onChange={handleChange} required rows="4" className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Tulis pesan Anda..." />
+              </div>
+              <button type="submit" disabled={isSubmitting} className="w-full py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
+                {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
+                <FaArrowRight className="w-4 h-4" />
+              </button>
+            </form>
+          </motion.div>
 
-            <div className="space-y-3">
-              {contactInfo.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.href}
-                  target={item.isMaps ? '_blank' : undefined}
-                  rel={item.isMaps ? 'noopener noreferrer' : undefined}
-                  className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-all group border border-transparent hover:border-gray-200"
-                >
-                  <div className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    item.isWhatsApp ? 'bg-[#25D366]/10 text-[#25D366]' : 
-                    item.isMaps ? 'bg-[#EA4335]/10 text-[#EA4335]' :
-                    'bg-primary/10 text-primary'
-                  } group-hover:scale-110 transition-transform`}>
-                    <item.icon size={20} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-secondary font-medium group-hover:text-primary transition-colors">
-                      {item.label}
-                    </div>
-                    <div className="text-gray-400 text-sm">{item.detail}</div>
-                  </div>
-                  {item.copy && (
-                    <button 
-                      onClick={(e) => {
-                        e.preventDefault()
-                        copyToClipboard(item.copy, item.label)
-                      }}
-                      className="text-gray-300 hover:text-primary transition-colors p-1"
-                      title="Salin"
-                    >
-                      <FaCopy size={16} />
-                    </button>
-                  )}
-                </a>
-              ))}
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} viewport={{ once: true }} className="space-y-6">
+            <div className="bg-gray-50 rounded-2xl p-6">
+              <h2 className="text-2xl font-bold text-gray-800 mb-2">BeeNET Computer</h2>
+              <p className="text-gray-500 text-sm">Closed - Opens 9.00 am</p>
             </div>
+            {contactInfo.map((item, index) => (
+              <motion.div key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }} viewport={{ once: true }} className="bg-gray-50 rounded-2xl p-6 hover:shadow-md transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                    <item.icon className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-gray-800">{item.title}</p>
+                    <p className="text-gray-600 text-sm">{item.value}</p>
+                    {item.link && (
+                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 mt-1 text-blue-600 text-sm font-medium hover:text-blue-800 transition-colors">
+                        {item.linkText || item.title}
+                        <FaExternalLinkAlt className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
 
-            <div className="mt-6 pt-6 border-t border-gray-100">
-              <p className="text-sm text-gray-500 mb-3">Ikuti kami di sosial media:</p>
-              <div className="flex gap-3">
-                {socials.map((social, index) => (
+            {/* Social Media Section */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 0.5 }} 
+              viewport={{ once: true }} 
+              className="bg-gray-50 rounded-2xl p-6"
+            >
+              <p className="font-semibold text-gray-800 mb-3">Ikuti Media Sosial Kami</p>
+              <div className="flex flex-wrap gap-3">
+                {socialMedia.map((social, idx) => (
                   <a
-                    key={index}
-                    href={social.href}
+                    key={idx}
+                    href={social.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className={`w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-white transition-all duration-300 ${social.color} hover:scale-110 hover:shadow-lg`}
+                    title={social.label}
+                    className={`w-11 h-11 bg-white rounded-xl flex items-center justify-center text-gray-600 border border-gray-200 transition-colors ${social.color} hover:text-white`}
                   >
-                    <social.icon size={20} />
+                    <social.icon className="w-5 h-5" />
                   </a>
                 ))}
               </div>
-            </div>
-
-            <div className="mt-6 p-4 bg-gray-50 rounded-xl">
-              <h4 className="font-bold text-secondary mb-2 flex items-center gap-2">
-                <FaClock className="text-primary" />
-                Jam Operasional
-              </h4>
-              <div className="space-y-1 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Senin - Jumat</span>
-                  <span className="text-secondary font-medium">{kontakData.jamOperasional.senin_jumat}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Sabtu</span>
-                  <span className="text-secondary font-medium">{kontakData.jamOperasional.sabtu}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Minggu</span>
-                  <span className="text-red-500 font-medium">{kontakData.jamOperasional.minggu}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-3 bg-gray-50 rounded-2xl p-6 md:p-8">
-            <h4 className="text-xl font-bold text-secondary mb-4">Kirim Pesan</h4>
-            <form onSubmit={handleSubmit}>
-              <div className="grid md:grid-cols-2 gap-4">
-                <input 
-                  type="text" 
-                  name="name" 
-                  placeholder="Nama Lengkap" 
-                  value={formData.name} 
-                  onChange={handleChange} 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" 
-                  required 
-                />
-                <input 
-                  type="email" 
-                  name="email" 
-                  placeholder="Email" 
-                  value={formData.email} 
-                  onChange={handleChange} 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" 
-                  required 
-                />
-              </div>
-              <input 
-                type="tel" 
-                name="phone" 
-                placeholder="Nomor HP" 
-                value={formData.phone} 
-                onChange={handleChange} 
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all mt-4" 
-              />
-              <select 
-                name="service" 
-                value={formData.service} 
-                onChange={handleChange} 
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all mt-4 appearance-none bg-white"
-              >
-                <option value="">Pilih Layanan</option>
-                <option value="Service PC">Service PC</option>
-                <option value="Service Laptop">Service Laptop</option>
-                <option value="Service Printer">Service Printer</option>
-                <option value="Networking">Networking</option>
-                <option value="Konsultasi IT">Konsultasi IT</option>
-                <option value="Lainnya">Lainnya</option>
-              </select>
-              <textarea 
-                name="message" 
-                placeholder="Detail keluhan atau kebutuhan Anda..." 
-                value={formData.message} 
-                onChange={handleChange} 
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all mt-4 resize-none min-h-[120px]" 
-                required 
-              />
-              <Button 
-                type="submit" 
-                variant="primary" 
-                size="lg" 
-                className="w-full mt-4"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <span className="animate-spin">⏳</span>
-                    Mengirim...
-                  </span>
-                ) : (
-                  'Kirim Pesan'
-                )}
-              </Button>
-              <p className="text-xs text-gray-400 text-center mt-4">
-                Kami akan merespon dalam 1x24 jam kerja
-              </p>
-            </form>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </section>
-  )
-}
 
-export default Kontak
+      {/* Map Section */}
+      <section className="w-full py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="rounded-2xl overflow-hidden shadow-lg"
+            >
+              <iframe
+                src={companyData.mapsEmbedUrl}
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Lokasi BeeNET Computer"
+              />
+            </motion.div>
+            <div className="text-center mt-4">
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              >
+                <FaMapMarkerAlt className="w-5 h-5" />
+                Buka di Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Kontak;

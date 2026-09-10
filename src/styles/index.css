@@ -1,19 +1,84 @@
-/* ========================================
-   DESIGN SYSTEM - BeeNET Computer
-   ======================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import './tokens.css';
-@import './typography.css';
-@import './animations.css';
-@import './utilities.css';
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-inter bg-gray-50 text-[#1E2A3A] antialiased;
+  }
+}
 
-/* Re-export untuk konsistensi */
-:root {
-  /* Design System CSS Variables */
-  --ds-color-primary: var(--color-primary);
-  --ds-color-secondary: var(--color-secondary);
-  --ds-font-family: var(--font-family-primary);
-  --ds-radius: var(--radius-lg);
-  --ds-shadow: var(--shadow-md);
-  --ds-transition: var(--transition-base);
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+}
+
+/* Reset dan Full Width */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+section {
+  width: 100%;
+}
+
+
+/* Header Styles */
+header {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+header .container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Navbar link hover effect */
+header nav a {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #2563EB;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+header nav a:hover::after {
+  width: 60%;
+}
+
+header nav a.active::after {
+  width: 60%;
+}
+
+/* Mobile menu */
+@media (max-width: 768px) {
+  header nav a::after {
+    display: none;
+  }
 }

@@ -1,8 +1,8 @@
-import React from 'react'
-import Layanan from '../components/sections/Layanan'
+import React from 'react';
+import DetailServices from '@/features/services/components/DetailServices';
 
-const LayananPage = () => {
-  return <Layanan />
-}
+const Layanan = () => {
+  return <DetailServices />;
+};
 
-export default LayananPage
+export default Layanan;

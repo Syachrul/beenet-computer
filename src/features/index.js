@@ -1,5 +1,7 @@
-export * from './home'
-export * from './services'
-export * from './about'
-export * from './testimonials'
-export * from './contact'
+// src/features/index.js
+export * from './home';
+export * from './about';
+export * from './services';
+// export * from './portfolio';  // Dihapus - tidak digunakan
+export * from './testimonials';
+export * from './contact';

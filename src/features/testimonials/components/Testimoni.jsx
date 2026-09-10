@@ -1,50 +1,52 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { FaStar } from 'react-icons/fa'
-import { SectionTitle } from '@components/ui'
-import { testimonials } from '@content/testimonials'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaStar } from 'react-icons/fa';
+import SectionTitle from '@/components/ui/SectionTitle';
+import testimonialsData from '@/data/testimonialsData';
 
 const Testimoni = () => {
+  const testimonials = testimonialsData || [];
+
   return (
-    <section className="section-padding bg-secondary text-white" id="testimoni">
-      <div className="container-custom">
-        <SectionTitle 
-          title="Apa Kata <span class='text-primary'>Klien</span>" 
-          subtitle="Mereka sudah merasakan layanan BeeNET Computer." 
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <SectionTitle
+          title="Testimoni"
+          subtitle="Apa kata klien kami"
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           {testimonials.map((item, index) => (
-            <motion.div 
-              key={item.id} 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.5, delay: index * 0.1 }} 
-              viewport={{ once: true }} 
-              className="bg-white/5 rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all"
+            <motion.div
+              key={item.id || index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white p-6 rounded-lg shadow-lg"
             >
-              <div className="flex gap-1 text-primary mb-3">
-                {[...Array(item.rating)].map((_, i) => (
-                  <FaStar key={i} />
+              <div className="flex mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar
+                    key={i}
+                    className={`w-5 h-5 ${
+                      i < (item.rating || 5)
+                        ? 'text-yellow-400'
+                        : 'text-gray-300'
+                    }`}
+                  />
                 ))}
               </div>
-              <blockquote className="text-white/80 italic mb-4">
-                "{item.quote}"
-              </blockquote>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary text-secondary flex items-center justify-center font-bold">
-                  {item.avatar}
-                </div>
-                <div>
-                  <div className="font-semibold">{item.name}</div>
-                  <div className="text-white/40 text-sm">{item.role}</div>
-                </div>
+              <p className="text-gray-600 mb-4 italic">"{item.content}"</p>
+              <div>
+                <h4 className="font-semibold">{item.name}</h4>
+                <p className="text-sm text-gray-500">{item.position}</p>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Testimoni
+export default Testimoni;
