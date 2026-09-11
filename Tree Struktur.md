@@ -17,18 +17,14 @@ beenet-computer
 │  │  ├─ layout
 │  │  │  └─ common
 │  │  │     ├─ Container.jsx
-│  │  │     ├─ Container.jsx.backup
 │  │  │     ├─ Footer.jsx
-│  │  │     ├─ Footer.jsx.backup
-│  │  │     ├─ Footer.jsx.backup2
 │  │  │     ├─ Header.jsx
-│  │  │     ├─ Header.jsx.backup
-│  │  │     ├─ Header.jsx.backup2
 │  │  │     ├─ LegalModal.jsx
 │  │  │     └─ LogoCoin.jsx
 │  │  └─ ui
 │  │     ├─ Accordion
 │  │     │  ├─ Accordion.jsx
+│  │     │  ├─ FaqItem.jsx
 │  │     │  └─ index.js
 │  │     ├─ Button
 │  │     │  ├─ Button.jsx
@@ -55,59 +51,38 @@ beenet-computer
 │  ├─ data
 │  │  ├─ company
 │  │  │  └─ index.js
-│  │  ├─ contactData.js
 │  │  ├─ index.js
 │  │  ├─ legalContent.js
 │  │  ├─ portfolioData.js
-│  │  ├─ servicesData.js
-│  │  └─ testimonialsData.js
+│  │  └─ servicesData.js
 │  ├─ features
 │  │  ├─ about
 │  │  │  ├─ components
 │  │  │  │  ├─ DetailTentang.jsx
 │  │  │  │  ├─ Keunggulan.jsx
 │  │  │  │  └─ TargetKlien.jsx
-│  │  │  ├─ data
-│  │  │  ├─ hooks
-│  │  │  ├─ index.js
-│  │  │  └─ utils
+│  │  │  └─ index.js
 │  │  ├─ contact
 │  │  │  ├─ components
 │  │  │  │  └─ Kontak.jsx
-│  │  │  ├─ data
-│  │  │  ├─ hooks
-│  │  │  ├─ index.js
-│  │  │  └─ utils
+│  │  │  └─ index.js
 │  │  ├─ home
 │  │  │  ├─ components
 │  │  │  │  ├─ Hero.jsx
 │  │  │  │  └─ Statistik.jsx
-│  │  │  ├─ data
-│  │  │  ├─ hooks
-│  │  │  ├─ index.js
-│  │  │  └─ utils
+│  │  │  └─ index.js
 │  │  ├─ index.js
-│  │  ├─ portfolio
-│  │  │  ├─ components
-│  │  │  ├─ data
-│  │  │  ├─ hooks
-│  │  │  ├─ index.js
-│  │  │  └─ utils
 │  │  ├─ services
 │  │  │  ├─ components
 │  │  │  │  ├─ DetailServices.jsx
 │  │  │  │  └─ Services.jsx
-│  │  │  ├─ data
-│  │  │  ├─ hooks
-│  │  │  ├─ index.js
-│  │  │  └─ utils
+│  │  │  └─ index.js
 │  │  └─ testimonials
 │  │     ├─ components
 │  │     │  └─ Testimoni.jsx
 │  │     ├─ data
-│  │     ├─ hooks
-│  │     ├─ index.js
-│  │     └─ utils
+│  │     │  └─ index.js
+│  │     └─ index.js
 │  ├─ hooks
 │  │  ├─ index.js
 │  │  └─ useReducedMotion.js
