@@ -5,6 +5,7 @@ import Layanan from './pages/Layanan'
 import Portfolio from './pages/Portfolio'
 import Tentang from './pages/Tentang'
 import Kontak from './pages/Kontak'
+import NotFound from './pages/NotFound'
 import Header from './components/layout/common/Header'
 import Footer from './components/layout/common/Footer'
 import ScrollToTop from './utils/ScrollToTop'
@@ -26,6 +27,7 @@ function App() {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/tentang" element={<Tentang />} />
             <Route path="/kontak" element={<Kontak />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />

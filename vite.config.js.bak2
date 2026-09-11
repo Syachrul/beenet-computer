@@ -10,11 +10,9 @@ export default defineConfig({
   plugins: [
     react(),
     sitemap({
-      hostname: 'https://beenetcom.my.id',
+      hostname: 'https://beenet-computer.com',
       dynamicRoutes: ['/layanan', '/portfolio', '/tentang', '/kontak'],
       exclude: ['/404'],
-      changefreq: 'weekly',
-      priority: 0.8,
     }),
   ],
   resolve: {

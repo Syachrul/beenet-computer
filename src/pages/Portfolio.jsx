@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FaCheckCircle, FaCalendarAlt, FaExternalLinkAlt } from 'react-icons/fa'
 import { portfolioData, categories } from '@/data/portfolioData'
 import Button from '../components/ui/Button'
+import SEO from '@/components/layout/common/SEO'
 
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState('all')
@@ -33,6 +34,11 @@ const Portfolio = () => {
 
   return (
     <>
+      <SEO
+        title="Portfolio"
+        description="Portofolio proyek IT dan komputer yang telah dikerjakan Beenet Computer untuk berbagai klien."
+        url="/portfolio"
+      />
       <section className="relative bg-gradient-to-br from-secondary-dark via-secondary to-secondary-light text-white py-20">
         <div className="absolute -top-1/2 -right-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl" />
         <div className="container-custom relative z-10">
