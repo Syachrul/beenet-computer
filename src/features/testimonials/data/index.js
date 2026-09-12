@@ -5,7 +5,7 @@ export const testimonialsData = [
     position: 'Guru SMA Negeri 2',
     avatar: 'AR',
     rating: 5,
-    content: 'Laptop saya mati total, dalam 2 jam sudah selesai dan berfungsi normal. Sangat profesional!',
+    content: 'Laptop saya mati total, tidak butuh waktu lama sudah selesai dan berfungsi normal. Sangat profesional!',
   },
   {
     id: 2,

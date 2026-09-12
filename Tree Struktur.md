@@ -8,7 +8,8 @@ beenet-computer
 ├─ package.json
 ├─ postcss.config.js
 ├─ public
-│  └─ beenet-logo.png
+│  ├─ beenet-logo.png
+│  └─ robots.txt
 ├─ README.md
 ├─ src
 │  ├─ api
@@ -20,7 +21,8 @@ beenet-computer
 │  │  │     ├─ Footer.jsx
 │  │  │     ├─ Header.jsx
 │  │  │     ├─ LegalModal.jsx
-│  │  │     └─ LogoCoin.jsx
+│  │  │     ├─ LogoCoin.jsx
+│  │  │     └─ SEO.jsx
 │  │  └─ ui
 │  │     ├─ Accordion
 │  │     │  ├─ Accordion.jsx
@@ -47,13 +49,20 @@ beenet-computer
 │  │        └─ SectionTitle.jsx
 │  ├─ config
 │  │  ├─ constants.js
-│  │  └─ index.js
+│  │  ├─ index.js
+│  │  └─ seo.js
 │  ├─ data
 │  │  ├─ company
 │  │  │  └─ index.js
 │  │  ├─ index.js
 │  │  ├─ legalContent.js
 │  │  ├─ portfolioData.js
+│  │  ├─ schema
+│  │  │  ├─ breadcrumb.js
+│  │  │  ├─ index.js
+│  │  │  ├─ localBusiness.js
+│  │  │  ├─ organization.js
+│  │  │  └─ service.js
 │  │  └─ servicesData.js
 │  ├─ features
 │  │  ├─ about
@@ -85,12 +94,14 @@ beenet-computer
 │  │     └─ index.js
 │  ├─ hooks
 │  │  ├─ index.js
-│  │  └─ useReducedMotion.js
+│  │  ├─ useReducedMotion.js
+│  │  └─ useSEO.js
 │  ├─ main.jsx
 │  ├─ pages
 │  │  ├─ Home.jsx
 │  │  ├─ Kontak.jsx
 │  │  ├─ Layanan.jsx
+│  │  ├─ NotFound.jsx
 │  │  ├─ Portfolio.jsx
 │  │  └─ Tentang.jsx
 │  ├─ store
@@ -100,6 +111,7 @@ beenet-computer
 │  └─ utils
 │     └─ ScrollToTop.jsx
 ├─ tailwind.config.js
+├─ vercel.json
 └─ vite.config.js
 
 ```
