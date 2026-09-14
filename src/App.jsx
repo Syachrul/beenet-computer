@@ -9,14 +9,16 @@ import NotFound from './pages/NotFound'
 import Header from './components/layout/common/Header'
 import Footer from './components/layout/common/Footer'
 import ScrollToTop from './utils/ScrollToTop'
+import { useGoogleAnalytics } from './hooks'
 
 console.log('🚀 App.jsx dimuat!')
 
-function App() {
-  console.log('📦 App component dirender')
-  
+// Komponen wrapper di dalam Router agar bisa pakai useLocation
+function AppContent() {
+  useGoogleAnalytics() // <-- Tracking GA4 di setiap perubahan route
+
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-gray-50">
         <Header />
@@ -42,6 +44,16 @@ function App() {
           }}
         />
       </div>
+    </>
+  )
+}
+
+function App() {
+  console.log('📦 App component dirender')
+  
+  return (
+    <Router>
+      <AppContent />
     </Router>
   )
 }

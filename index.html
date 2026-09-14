@@ -19,6 +19,20 @@
     <meta name="description" content="BeeNET Computer adalah perusahaan IT yang bergerak di bidang jasa service PC, Laptop, Printer, dan Networking." />
     <meta name="keywords" content="service pc, service laptop, service printer, networking, jasa IT, teknisi komputer" />
     <meta name="theme-color" content="#F5B042" />
+
+    <!-- ============================================== -->
+    <!-- Google tag (gtag.js) - Google Analytics 4      -->
+    <!-- ============================================== -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_MEASUREMENT_ID%"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // Nonaktifkan page_view otomatis, akan ditangani manual oleh React Router
+      gtag('config', '%VITE_GA_MEASUREMENT_ID%', { send_page_view: false });
+    </script>
+    <!-- ============================================== -->
   </head>
   <body>
     <div id="root"></div>
